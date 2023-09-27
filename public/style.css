@@ -1,0 +1,43 @@
+
+nav {
+    background-color: lightgreen;
+    height: 100%; /* 100% Full-height */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;/* Stay at the top */
+    left: 0;
+ 
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px;
+}
+
+#project-container {
+    margin-left: 200px;
+}
+
+
+
+.modal {
+    width: 300px;
+    height: 300px;
+    background-color: lightblue;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.close-btn {
+    background-color: lightcoral;
+    border: none;
+    margin: .5em;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    
+}
+
+.hidden {
+    display: none;
+}
