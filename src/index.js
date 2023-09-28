@@ -28,14 +28,18 @@ const projectLogic = () => {
 
         projectContainer.innerHTML = ""
         projects.forEach(project => {
-            let p = document.createElement('p')
-            p.textContent = project.getTitle()
-            projectContainer.append(p)
+           const projectsSection = document.getElementById("projects-section")
+           const projectButton = document.createElement("button")
+           projectButton.textContent = project.getTitle()
+           projectButton.dataset.index = projects.indexOf(project)
+           projectsSection.append(projectButton)
+
         });
     })
 }
 
 buildDOM()
+projectLogic()
 
 
 

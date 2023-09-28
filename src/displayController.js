@@ -21,13 +21,28 @@ const createNavBar = () => {
     const createProjectButton = document.createElement("button");
     createProjectButton.id = "create-project-btn";
     createProjectButton.textContent = "Add Project"
+
+    const projectsDiv = document.createElement("p");
+    projectsDiv.id = "projects-section";
+    projectsDiv.textContent = "test";
     
     const siteHeader = document.createElement("h2")
     siteHeader.textContent = "Site Name"
 
-    nav.append(siteHeader, createProjectButton)
+    nav.append(siteHeader, createProjectButton, projectsDiv)
 
     return nav  
+}
+
+export function projectPage(project) {
+    const p = document.createElement("div")
+    const pageTitle = document.createElement("h2");
+    pageTitle.textContent = project.getTitle();
+    p.textContent = pageTitle
+    
+    const projectContainer = document.getElementById("project-container")
+    projectContainer.append(p)
+
 }
 
 const projectForm = () => {
@@ -58,19 +73,25 @@ const projectForm = () => {
 }
 
 
+
+
 const buildDOM = () => {
     /* Builds modal that appears when Create Project button is clicked. Is automatically set to hidden when added*/
     let projectModal = createModal()
     projectModal.id = "project-modal"
     projectModal.classList.add("hidden")
 
+    let projectPage = document.createElement("div")
+    projectPage.id = "project-container"
+
     let newProjectForm = projectForm()
     projectModal.append(newProjectForm)
 
-    let navBar = createNavbar();
+    let navBar = createNavBar();
+    
 
     /* appends all above elements to the body tag of our html document*/
-    document.body.append(navBar, projectModal)
+    document.body.append(navBar, projectModal, projectPage)
 
     /* selects create project button element and adds click event handler so the create project modal can appear to the user once the button is clicked*/
 
