@@ -28,11 +28,16 @@ function todoForm(){
     const titleField = document.createElement("input")
     titleField.setAttribute("type", "text")
     titleField.id = "todo-title-field"
+    const descriptionLabel = document.createElement("label")
+    descriptionLabel.textContent = "Todo Description"
+    const descriptionField = document.createElement("input")
+    descriptionField.setAttribute("type", "text")
+    descriptionField.id = "todo-description-field"
     const submit = document.createElement("input")
     submit.setAttribute("type", "submit")
     submit.textContent = "Add Project"
     submit.id = "add-todo-button"
-    todoFormContainer.append(titleLabel, titleField, submit)
+    todoFormContainer.append(titleLabel, titleField, descriptionLabel, descriptionField, submit)
 
     return todoFormContainer
 }
@@ -50,39 +55,26 @@ function projectButton(project){
         projectDiv.innerHTML = ""
         projectDiv.append(displayProject(project), todoForm())
         handleTodoForm(project)
-        console.log(project)
         project.todos.forEach((todo) => projectDiv.append(displayTodos(todo)))
-        project.todos.forEach((todo) => projectDiv.append(markTodoButton(todo)))
     })
     
     nav.append(projectButton)
 }
 
 /* */
-function markTodoButton(todo){
-    const markTodoButton = document.createElement("button")
-    markTodoButton.textContent = todo.title
-    markTodoButton.addEventListener("click", (e) => {
-        todo.setCompletion()
-        console.log(todo.getCompletion())
-    })
-    return markTodoButton
-}
+
 
 function displayTodos(todo){
     const todoContainer = document.createElement("div")
-    const todoHeader = document.createElement("p");
+    todoContainer.classList.add("todo-container")
+    const todoHeader = document.createElement("h3");
     const todoDescription = document.createElement("p")
     const todoStatus = document.createElement("input")
-    console.log("this is display todo")
-    console.log(todo)
-    const newTodo = Todo(todo.title)
-    console.log(newTodo)
+    const newTodo = Todo(todo.title, todo.getDescription())
     todoStatus.classList.add("todo-checkbox")
     todoStatus.type = "checkbox"
     todoStatus.checked = newTodo.getCompletion()
     todoHeader.textContent = newTodo.getTitle()
-    console.log(todo)
     todoDescription.textContent = newTodo.getDescription()
 
     todoContainer.append(todoHeader, todoDescription, todoStatus)
@@ -101,4 +93,4 @@ function displayProject(project){
 
 
 
-export {displayProject, displayTodos, markTodoButton, projectButton, projectForm}
+export {displayProject, displayTodos, projectButton, projectForm}

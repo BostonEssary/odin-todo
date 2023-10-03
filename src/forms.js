@@ -34,8 +34,10 @@ function handleTodoForm(project){
         let localProject = JSON.parse(localStorage.getItem(project.title))
         console.log(localProject)
         let todoTitle = document.getElementById("todo-title-field")
-        
-        let newTodo = Todo(todoTitle.value, "this is the defualt description")
+        let todoDescription = document.getElementById("todo-description-field")
+        console.log(todoDescription.value)
+        let newTodo = Todo(todoTitle.value, todoDescription.value)
+        console.log(newTodo)
         let stringifiedTodo = JSON.stringify(newTodo)
         console.log(stringifiedTodo)
         project.addTodo(newTodo)
