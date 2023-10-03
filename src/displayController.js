@@ -21,8 +21,10 @@ function projectForm(){
 }
 
 function todoForm(){
+    const br = document.createElement("br")
     const todoFormContainer = document.createElement("form")
     todoFormContainer.id = "todo-form"
+    todoFormContainer.classList.add("hidden")
     const titleLabel = document.createElement("label")
     titleLabel.textContent = "Todo Title"
     const titleField = document.createElement("input")
@@ -35,9 +37,9 @@ function todoForm(){
     descriptionField.id = "todo-description-field"
     const submit = document.createElement("input")
     submit.setAttribute("type", "submit")
-    submit.textContent = "Add Project"
+    submit.value = "Add Todo"
     submit.id = "add-todo-button"
-    todoFormContainer.append(titleLabel, titleField, descriptionLabel, descriptionField, submit)
+    todoFormContainer.append(titleLabel, document.createElement("br"), titleField, document.createElement("br"), descriptionLabel, document.createElement("br"), descriptionField, document.createElement("br"),  submit)
 
     return todoFormContainer
 }
@@ -84,9 +86,16 @@ function displayTodos(todo){
 function displayProject(project){
     const projectContainer = document.createElement("div")
     const projectHeader = document.createElement("h2");
+    const showTodoFormButton = document.createElement("button")
+    showTodoFormButton.textContent = "Add Todo?"
+    showTodoFormButton.addEventListener("click", () => {
+        const todoForm = document.getElementById("todo-form")
+        todoForm.classList.remove("hidden")
+        todoForm.classList.add("bounce-in-right")
+    })
     projectHeader.textContent = project.title
 
-    projectContainer.append(projectHeader)
+    projectContainer.append(projectHeader, showTodoFormButton)
 
     return projectContainer
 }

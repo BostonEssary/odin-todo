@@ -2,3 +2,37 @@
     margin: 1em;
     margin-bottom: 2em;
 }
+
+#todo-form {
+    background-color: lightpink;
+    width: fit-content;
+    padding: 1em;
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.bounce-in-right {
+    animation: bounce-in-right .5s ease ;
+  }
+  @keyframes bounce-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(2000px);
+    }
+    60% {
+      opacity: 1;
+      transform: translateX(-30px);
+    }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+  }
