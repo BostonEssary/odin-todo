@@ -17,7 +17,7 @@ const Todo = (title, description) => {
         completed = true
     }
 
-    return {title, description, getTitle, getDescription, setCompletion, getCompletion}
+    return {title, description, completed, getTitle, getDescription, setCompletion, getCompletion}
 }
 
 export default Todo 

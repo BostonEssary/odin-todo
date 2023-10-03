@@ -21,11 +21,14 @@ function handleProjectForm(){
     })
 }
 
+function handleTodoCompletion(todo){
+    
+}
 
 
 function handleTodoForm(project){
     const todoForm = document.getElementById("todo-form")
-    let localProject = JSON.parse(localStorage.getItem(project.title))
+    
 
     todoForm.addEventListener("submit", (e) => {
         e.preventDefault()
