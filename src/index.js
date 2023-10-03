@@ -5,31 +5,30 @@ import { handleProjectForm } from "./forms"
 /* */
 const Main = () => {
     /* Dummy Data for testing*/
-    const firstProject = Project("first project")
-    const secondProject = Project("second project")
-    const firstTodo = Todo("test", "description")
-    const secondTodo = Todo("this is another todo", "this is the description")
-    let projects = [firstProject, secondProject]
-    let todos = [firstTodo, secondTodo]
+   
     const todoCheckboxes = document.getElementsByClassName("todo-checkbox")
-    
+    const localProjects = Object.keys(localStorage)
     /* goes over each project in project arr*/
-    projects.forEach((project) => {
-
-        /* retrieves todos arr and adds each todo to the current project iteration*/
-        todos.forEach((todo) => project.addTodo(todo))
-        
-        
-        projectButton(project)
-        
-        
-        
-        
-    })
     
+
+    localProjects.forEach((key) => {
+        let currentProject = JSON.parse(localStorage.getItem(key))
+        let currentProjectTodos = currentProject.todos
+        let project = Project(currentProject.title)
+        currentProjectTodos.forEach((todo) => {
+            let newTodo = Todo(todo)
+            project.todos.push(newTodo)
+        })
+        console.log(typeof(project.todos[0]))
+        projectButton(project)
+    })
+
     projectForm()
-    handleProjectForm(projects)
-    console.log(todoCheckboxes)
+    handleProjectForm()
+    
+   const test = JSON.parse(localStorage.getItem("test"))
+    console.log(test.todos)
+    
 }
 
 Main()

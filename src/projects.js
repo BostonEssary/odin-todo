@@ -7,6 +7,7 @@ const Project = (title) => {
         todos.push(todo)
     }
 
+
     const getTitle = () => {
         return title
     }
