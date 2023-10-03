@@ -74,7 +74,10 @@ function displayTodos(todo){
     const todoHeader = document.createElement("p");
     const todoDescription = document.createElement("p")
     const todoStatus = document.createElement("input")
+    console.log("this is display todo")
+    console.log(todo)
     const newTodo = Todo(todo.title)
+    console.log(newTodo)
     todoStatus.classList.add("todo-checkbox")
     todoStatus.type = "checkbox"
     todoStatus.checked = newTodo.getCompletion()

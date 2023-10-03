@@ -16,7 +16,8 @@ const Main = () => {
         let currentProjectTodos = currentProject.todos
         let project = Project(currentProject.title)
         currentProjectTodos.forEach((todo) => {
-            let newTodo = Todo(todo)
+            let parsedTodo = JSON.parse(todo)
+            let newTodo = Todo(parsedTodo.title)
             project.todos.push(newTodo)
         })
         console.log(typeof(project.todos[0]))

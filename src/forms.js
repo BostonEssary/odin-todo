@@ -32,14 +32,16 @@ function handleTodoForm(project){
 
         /* locates project in local storage based on the project arguement's title*/
         let localProject = JSON.parse(localStorage.getItem(project.title))
-
+        console.log(localProject)
         let todoTitle = document.getElementById("todo-title-field")
         
-        let newTodo = Todo(todoTitle.value)
+        let newTodo = Todo(todoTitle.value, "this is the defualt description")
+        let stringifiedTodo = JSON.stringify(newTodo)
+        console.log(stringifiedTodo)
         project.addTodo(newTodo)
-        localProject.todos.push("todo")
+        localProject.todos.push(stringifiedTodo)
         localStorage.setItem(localProject.title, JSON.stringify(localProject) )
-        console.log(JSON.parse(localStorage.getItem(project.title)))
+        
     })
 }
 export {handleProjectForm, handleTodoForm}
