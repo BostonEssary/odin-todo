@@ -39,6 +39,11 @@ function todoForm(){
     submit.setAttribute("type", "submit")
     submit.value = "Add Todo"
     submit.id = "add-todo-button"
+    submit.addEventListener("click", () => {
+        const todoForm = document.getElementById("todo-form")
+        todoForm.classList.add("hidden")
+        todoForm.classList.remove("bounce-in-right")
+    })
     todoFormContainer.append(titleLabel, document.createElement("br"), titleField, document.createElement("br"), descriptionLabel, document.createElement("br"), descriptionField, document.createElement("br"),  submit)
 
     return todoFormContainer
@@ -91,7 +96,7 @@ function displayProject(project){
     showTodoFormButton.addEventListener("click", () => {
         const todoForm = document.getElementById("todo-form")
         todoForm.classList.remove("hidden")
-        todoForm.classList.add("bounce-in-right")
+        todoForm.classList.toggle("bounce-in-right")
     })
     projectHeader.textContent = project.title
 
