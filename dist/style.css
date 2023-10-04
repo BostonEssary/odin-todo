@@ -1,19 +1,120 @@
+*{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar{
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  overflow-y: auto;
+  transition: width .3s ease-in-out;
+  border-radius: 10px;
+}
+.nav-content{
+  display: flex;
+  flex-direction: column;
+  transition: visibility 0s, opacity 0.3s linear;
+}
+
+.menu-btn{
+  display: inline-block;
+    position: absolute;
+    right: 0;
+  margin-top: 1em;
+  margin-right: 5px;
+}
+
+#content {
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+  padding: 1px 16px;
+  height: 1000px;
+  
+}
+
+#project-div{
+  background-color: lightblue;
+  height: fit-content;
+  border-radius: 10px;
+  margin-left: 30px;
+  width: 100%;
+}
+
+.project-btn{
+  background-color: lightgreen;
+  border: none;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  transition: all .5s;
+}
+
+.project-btn:hover{
+  background-color: lightblue;
+}
+
 .todo-container {
     margin: 1em;
     margin-bottom: 2em;
+    border: 2px solid lightyellow;
+    padding: 1em;
+    border-radius: 15px;
 }
 
 #todo-form {
     background-color: lightpink;
+    border-radius: 10px;
     width: fit-content;
     padding: 1em;
     position: absolute; 
     left: 0; 
     right: 0; 
+    
     margin-left: auto; 
     margin-right: auto;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
+}
+
+.nav-header{
+  display: flex;
+  align-items: center;
+}
+
+.nav-header-button{
+  width: fit-content;
+  height: fit-content;
+  background: none;
+  border: none;
+  transition: transform .3s;
+}
+
+.rotate{
+  transform: rotate(135deg);
+}
+
+.collapsed{
+  width: 40px;
+}
+
+#project-form{
+  background-color: lightpink;
+  border-radius: 10px;
+  width: fit-content;
+  padding: 1em;
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  top: 200px;
+  margin-left: auto; 
+  margin-right: auto;
+  transition: visibility 0s, opacity 0.5s linear;
+  
 }
 
 .hidden{
@@ -28,6 +129,10 @@
 .slide-out-right {
     animation: slide-out-right .5s ease forwards;
 }
+
+
+
+
 
   @keyframes bounce-in-right {
     0% {

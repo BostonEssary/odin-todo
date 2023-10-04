@@ -1,13 +1,13 @@
 import Project from "./projects"
-import { projectButton } from "./displayController"
+import { projectButton, displayTodos } from "./displayController"
 import Todo from "./todos"
 
+/* creates Project obj in local storage and adds new project button to DOM*/
 function handleProjectForm(){
     const projectForm = document.getElementById("project-form")
     const localProjects = Object.keys(localStorage)
     projectForm.addEventListener("submit", (e) => {
         e.preventDefault()
-        let nav = document.getElementById("navbar")
         let projectTitle = document.getElementById("project-title-field")
         let newProject = Project(projectTitle.value)
         if(localProjects.includes(projectTitle.value)){
@@ -21,14 +21,12 @@ function handleProjectForm(){
     })
 }
 
-function handleTodoCompletion(todo){
-    
-}
 
 
+/* creates Todo in local storage Project obj*/
 function handleTodoForm(project){
     const todoForm = document.getElementById("todo-form")
-    
+    const projectDiv = document.getElementById("project-div")
 
     todoForm.addEventListener("submit", (e) => {
         e.preventDefault()
@@ -44,6 +42,7 @@ function handleTodoForm(project){
         let stringifiedTodo = JSON.stringify(newTodo)
         console.log(stringifiedTodo)
         project.addTodo(newTodo)
+        projectDiv.append(displayTodos(newTodo, project))
         localProject.todos.push(stringifiedTodo)
         localStorage.setItem(localProject.title, JSON.stringify(localProject) )
         
