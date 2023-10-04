@@ -73,26 +73,28 @@ function projectButton(project){
 
 function displayTodos(todo, project){
     const todoContainer = document.createElement("div")
+    console.log(todo)
     todoContainer.classList.add("todo-container")
     const todoHeader = document.createElement("h3");
     const todoDescription = document.createElement("p")
     const todoStatus = document.createElement("input")
-    const newTodo = Todo(todo.title, todo.getDescription(), todo.completed)
+    const newTodo = Todo(todo.title, todo.getDescription())
+    newTodo.completed = todo.completed
     todoStatus.classList.add("todo-checkbox")
     todoStatus.type = "checkbox"
     console.log(newTodo.completed)
     console.log(todo.completed)
-    todoStatus.checked = newTodo.getCompletion()
+    console.log(newTodo.getCompletion())
+    todoStatus.checked = newTodo.completed
     todoStatus.addEventListener("click", () => {
         let todosProject = localStorage.getItem(project.title)
         let parsedTodosProject = JSON.parse(todosProject)
-        console.log(parsedTodosProject.todos)
+        console.log(parsedTodosProject)
         parsedTodosProject.todos.forEach((todo) => {
             let currentTodo = JSON.parse(todo)
             if(newTodo.title == currentTodo.title){
                 if(currentTodo.completed == false){
                     let index = parsedTodosProject.todos.indexOf(todo)
-                    console.log(parsedTodosProject.todos[index])
                     currentTodo.completed = true
                     newTodo.completed = true
                     let stringifiedCurrentTodo = JSON.stringify(currentTodo)
@@ -103,6 +105,7 @@ function displayTodos(todo, project){
                     currentTodo.completed = false
                     newTodo.completed = false
                     let stringifiedCurrentTodo = JSON.stringify(currentTodo)
+                    console.log(stringifiedCurrentTodo)
                     parsedTodosProject.todos[index] = stringifiedCurrentTodo
                 }
             }
@@ -110,7 +113,7 @@ function displayTodos(todo, project){
         })
         let replacementProject = JSON.stringify(parsedTodosProject)
         localStorage.setItem(project.title, replacementProject)
-        
+        console.log(newTodo.completed)
     })
     todoHeader.textContent = newTodo.getTitle()
     todoDescription.textContent = newTodo.getDescription()

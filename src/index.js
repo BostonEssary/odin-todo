@@ -18,6 +18,7 @@ const Main = () => {
         currentProjectTodos.forEach((todo) => {
             let parsedTodo = JSON.parse(todo)
             let newTodo = Todo(parsedTodo.title, parsedTodo.description)
+            newTodo.completed = parsedTodo.completed
             project.todos.push(newTodo)
             
         })
